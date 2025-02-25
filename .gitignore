@@ -1,0 +1,22 @@
+# Archivos de usuario
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+**/*.db
+
+
+# Archivos generados por Mono
+mono_crash.*
+
+# Resultados de compilación
+bin/
+obj/
+out/
+**/bin/
+**/obj/
+**/out/
+.vs
+
+# Archivos de registro
+*.log

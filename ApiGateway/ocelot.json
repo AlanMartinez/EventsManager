@@ -1,0 +1,22 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/events",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/events",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "AzureAD"
+      //}
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5062"
+  }
+}
