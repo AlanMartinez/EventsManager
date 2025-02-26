@@ -4,7 +4,7 @@
 *.userosscache
 *.sln.docstates
 **/*.db
-
+**/appsetings.json
 
 # Archivos generados por Mono
 mono_crash.*
@@ -20,3 +20,6 @@ out/
 
 # Archivos de registro
 *.log
+/EventService/appsettings.Development.json
+/EventService/eventservice.db-shm
+/EventService/eventservice.db-wal

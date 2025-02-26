@@ -2,6 +2,8 @@ using EventService.Application.Queries.Handlers;
 using EventService.Infrastructure;
 using EventService.Infrastructure.Impl;
 using EventService.Models;
+using EventService.Services.Impl;
+using EventService.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,14 +27,19 @@ builder.Services.AddDbContext<EventDbContext>(options =>
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IGenericRepository<Event>, EventRepository>();
 
-
-
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration["Redis:ConnectionString"];
+    options.InstanceName = "eventservice-redis";
+});
+builder.Services.AddSingleton(typeof(ICacheService<>), typeof(RedisCacheService<>));
 
 
 var app = builder.Build();
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5001";
 app.Urls.Add($"http://localhost:{port}");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
