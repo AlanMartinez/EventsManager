@@ -25,7 +25,7 @@ namespace EventService.Controllers
         public async Task<IActionResult> CreateEvent([FromBody] CreateEventCommand command)
         {
             var createdEvent = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetAllEvents), new { id = createdEvent.Id }, createdEvent);
+            return CreatedAtAction(nameof(CreateEvent), new { id = createdEvent.Id }, createdEvent);
         }
 
         [HttpGet("{id}")]

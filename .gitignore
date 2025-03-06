@@ -5,6 +5,7 @@
 *.sln.docstates
 **/*.db
 **/appsetings.json
+**/Migrations
 
 # Archivos generados por Mono
 mono_crash.*

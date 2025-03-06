@@ -1,7 +1,5 @@
-﻿using EventService.Models;
-using StackExchange.Redis;
+﻿using StackExchange.Redis;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace EventService.Services.Impl
 {
@@ -16,9 +14,9 @@ namespace EventService.Services.Impl
             {
                 var connectionString = configuration["Redis:ConnectionString"];
                 var redisOptions = ConfigurationOptions.Parse(connectionString);
-                redisOptions.ConnectTimeout = 10000; // Aumenta el tiempo de espera
+                redisOptions.ConnectTimeout = 10000;
                 redisOptions.SyncTimeout = 10000;
-                redisOptions.AbortOnConnectFail = false; // Evita que falle si la conexión se pierde temporalmente
+                redisOptions.AbortOnConnectFail = false;
 
                 var redis = ConnectionMultiplexer.Connect(redisOptions);
                 _cache = redis.GetDatabase();
@@ -40,7 +38,7 @@ namespace EventService.Services.Impl
         public async Task SetCachedEventsAsync(IEnumerable<T> events)
         {
             var serializedData = JsonSerializer.Serialize(events);
-            var options = TimeSpan.FromMinutes(10); // Expira en 10 minutos
+            var options = TimeSpan.FromMinutes(10);
 
             await _cache.StringSetAsync(_cacheKey, serializedData, options);
         }

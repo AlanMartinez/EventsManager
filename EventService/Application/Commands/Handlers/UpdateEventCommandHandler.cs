@@ -16,8 +16,8 @@ public class UpdateEventCommandHandler : IRequestHandler<UpdateEventCommand, boo
         var eventItem = await _repository.GetByIdAsync(request.Id);
         if (eventItem == null) return false;
 
-        eventItem.Name = request.Name;
-        eventItem.Date = request.Date;
+        eventItem.Title = request.Name;
+        eventItem.Description = request.Date;
         await _repository.UpdateAsync(eventItem);
 
         return true;

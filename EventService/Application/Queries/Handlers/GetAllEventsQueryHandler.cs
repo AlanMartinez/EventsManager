@@ -19,10 +19,9 @@ namespace EventService.Application.Queries.Handlers
         public async Task<IEnumerable<Event>> Handle(GetAllEventsQuery request, CancellationToken cancellationToken)
         {
             var cachedEvents = await _cacheService.GetCachedEventsAsync();
-            if (cachedEvents != null)
-            {
+            if (cachedEvents != null && cachedEvents.Any())
                 return cachedEvents;
-            }
+            
 
             var events = await _repository.GetAllAsync();
 
