@@ -9,6 +9,7 @@ using EventService.Validations.Commands;
 using FluentValidation;
 using EventService.Validations;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,8 +41,13 @@ builder.Services.AddStackExchangeRedisCache(options =>
 builder.Services.AddSingleton(typeof(ICacheService<>), typeof(RedisCacheService<>));
 
 //FluentValidation
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddValidatorsFromAssemblyContaining<CreateEventCommandValidator>();
+
 
 //AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);
