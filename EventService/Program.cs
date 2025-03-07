@@ -48,6 +48,8 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 builder.Services.AddValidatorsFromAssemblyContaining<CreateEventCommandValidator>();
 
+//AzureFunctions
+builder.Services.AddHttpClient<IAzureFunctionService, AzureFunctionService>();
 
 //AutoMapper
 builder.Services.AddAutoMapper(typeof(Program).Assembly);

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{1F049216-728F-4EFC-B327-2C2920072173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{1F049216-728F-4EFC-B327-2C2920072173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventService", "EventService\EventService.csproj", "{9C51243C-CA1A-4353-8AB3-78A4421F41C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventService", "EventService\EventService.csproj", "{9C51243C-CA1A-4353-8AB3-78A4421F41C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagerAzureFunctions", "ManagerAzureFunctions\ManagerAzureFunctions.csproj", "{CCB955F9-9D8D-498F-97AD-E503BAA8A5F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9C51243C-CA1A-4353-8AB3-78A4421F41C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C51243C-CA1A-4353-8AB3-78A4421F41C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C51243C-CA1A-4353-8AB3-78A4421F41C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCB955F9-9D8D-498F-97AD-E503BAA8A5F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCB955F9-9D8D-498F-97AD-E503BAA8A5F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCB955F9-9D8D-498F-97AD-E503BAA8A5F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCB955F9-9D8D-498F-97AD-E503BAA8A5F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
