@@ -1,5 +1,7 @@
 ﻿using EventService.Models.Enums;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.Net.Sockets;
 
 namespace EventService.Models
 {
@@ -46,5 +48,8 @@ namespace EventService.Models
         public DateTime CreatedAt { get; set; }
 
         public DateTime? UpdatedAt { get; set; }
+
+        public ICollection<EventAttendee> EventAttendees { get; set; } = new List<EventAttendee>();
+        public ICollection<EventReview> EventReviews { get; set; } = new List<EventReview>();
     }
 }

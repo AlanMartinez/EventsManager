@@ -24,3 +24,4 @@ out/
 /EventService/appsettings.Development.json
 /EventService/eventservice.db-shm
 /EventService/eventservice.db-wal
+/EventService/_populateDB.py
