@@ -24,7 +24,7 @@ namespace EventService.Application.Commands.Handlers
             var newEvent = _mapper.Map<Event>(request);
             await _repository.AddAsync(newEvent);
 
-            await _azureFunctionService.CallEventCreatedFunctionAsync(newEvent);
+            _azureFunctionService.CallEventCreatedFunctionAsync(newEvent);
 
             return newEvent;
         }

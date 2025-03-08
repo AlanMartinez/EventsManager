@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EventService.DTOs.AzureFunctions;
 using EventService.Models;
 
 namespace EventService._Mappers
@@ -13,6 +14,8 @@ namespace EventService._Mappers
                 .ForMember(dest => dest.State, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
+
+            CreateMap<Event, EventCreatedFunctionDto>();
 
         }
     }

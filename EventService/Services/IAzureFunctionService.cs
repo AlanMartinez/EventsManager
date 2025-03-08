@@ -4,6 +4,6 @@ namespace EventService.Services
 {
     public interface IAzureFunctionService
     {
-        Task<bool> CallEventCreatedFunctionAsync(Event newEvent);
+        void CallEventCreatedFunctionAsync(Event newEvent);
     }
 }
