@@ -10,9 +10,9 @@ namespace EventService.Services.Impl
         private readonly HttpClient _httpClient;
         private readonly string _functionUrl;
         private readonly IMapper _mapper;
-        private readonly ILogger _logger;
+        private readonly ILogger<AzureFunctionService> _logger;
 
-        public AzureFunctionService(HttpClient httpClient, IConfiguration configuration, IMapper mapper, ILogger logger)
+        public AzureFunctionService(HttpClient httpClient, IConfiguration configuration, IMapper mapper, ILogger<AzureFunctionService> logger)
         {
             _httpClient = httpClient;
             var functionConfig = configuration.GetSection("AzureFunction");

@@ -10,12 +10,19 @@ using FluentValidation;
 using EventService.Validations;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using EventService.Middlewares;
+using EventService.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(new ApiResponseWrapperAttribute());
+});
 
-builder.Services.AddControllers();
+builder.Logging.AddConsole();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -24,7 +31,7 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssemblyContaining<GetAllEventsQueryHandler>());
 
-
+//Database
 builder.Services.AddDbContext<EventDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -57,6 +64,9 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 
 var app = builder.Build();
+
+//Middlewares
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 var port = Environment.GetEnvironmentVariable("PORT") ?? "5001";
 app.Urls.Add($"http://localhost:{port}");
