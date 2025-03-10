@@ -1,4 +1,7 @@
 ﻿using EventService.Models;
 using MediatR;
 
-public record GetAllEventsQuery() : IRequest<IEnumerable<Event>>;
+namespace EventService.Application.Queries
+{
+    public record GetAllEventsQuery() : IRequest<IEnumerable<Event>>;
+}

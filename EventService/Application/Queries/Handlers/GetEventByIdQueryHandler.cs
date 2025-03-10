@@ -1,4 +1,5 @@
-﻿using EventService.Infrastructure;
+﻿using EventService.Application.Queries;
+using EventService.Infrastructure;
 using EventService.Models;
 using MediatR;
 

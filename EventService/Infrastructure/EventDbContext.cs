@@ -1,7 +1,5 @@
 ﻿using EventService.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Sockets;
-using System;
 
 namespace EventService.Infrastructure
 {

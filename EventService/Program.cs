@@ -37,7 +37,8 @@ builder.Services.AddDbContext<EventDbContext>(options =>
 
 //Repositories
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<IGenericRepository<Event>, EventRepository>();
+builder.Services.AddScoped<IEventRepository, EventRepository>();
+
 
 //RedisCache
 builder.Services.AddStackExchangeRedisCache(options =>

@@ -4,7 +4,7 @@ namespace EventService.Infrastructure.Impl
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly EventDbContext _context;
+        internal readonly EventDbContext _context;
 
         public GenericRepository(EventDbContext context)
         {

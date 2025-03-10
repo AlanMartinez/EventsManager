@@ -1,3 +1,4 @@
+using EventService.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -50,6 +51,14 @@ namespace EventService.Controllers
             var deleted = await _mediator.Send(new DeleteEventCommand(id));
             if (!deleted) return NotFound();
             return NoContent();
+        }
+
+        [HttpGet("attendees-rating")]
+        public async Task<IActionResult> GetEventAttendeesAndRatingQuery()
+        {
+            var eventItem = await _mediator.Send(new GetEventAttendeesAndRatingQuery());
+            if (eventItem == null) return NotFound();
+            return Ok(eventItem);
         }
     }
 }
