@@ -1,3 +1,6 @@
 ﻿using MediatR;
 
-public record UpdateEventCommand(string Id, string Name, string Date) : IRequest<bool>;
+namespace EventService.Application.Commands
+{
+    public record UpdateEventCommand(Guid Id, string Name, string Date) : IRequest<bool>;
+}

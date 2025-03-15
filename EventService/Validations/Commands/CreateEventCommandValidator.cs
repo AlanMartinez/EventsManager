@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using EventService.Application.Commands;
+using FluentValidation;
 
 namespace EventService.Validations.Commands
 {

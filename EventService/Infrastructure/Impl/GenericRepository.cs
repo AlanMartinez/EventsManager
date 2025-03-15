@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace EventService.Infrastructure.Impl
 {
@@ -16,7 +17,7 @@ namespace EventService.Infrastructure.Impl
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(string id)
+        public async Task<T> GetByIdAsync(Guid id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
@@ -33,7 +34,7 @@ namespace EventService.Infrastructure.Impl
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(string id)
+        public async Task DeleteAsync(Guid id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
             if (entity != null)

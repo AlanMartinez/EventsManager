@@ -32,7 +32,8 @@ namespace EventService.Middlewares
             {
                 success = false,
                 message = "Ocurrió un error interno. Por favor intente más tarde.",
-                detail = exception.Message
+                detail = exception.Message,
+                stackTrace = exception.StackTrace
             };
 
             var response = JsonSerializer.Serialize(errorResponse);

@@ -1,5 +1,6 @@
 ﻿using EventService.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EventService.Infrastructure
 {
@@ -26,6 +27,18 @@ namespace EventService.Infrastructure
                 .HasOne(ea => ea.Attendee)
                 .WithMany(a => a.EventAttendees)
                 .HasForeignKey(ea => ea.AttendeeId);
+
+            var guidToStringConverter = new ValueConverter<Guid, string>(
+                                            v => v.ToString("D").ToLowerInvariant(),
+                                            v => Guid.Parse(v)                       
+                                        );
+
+            modelBuilder.Entity<Attendee>()
+                .Property(a => a.AttendeeId)
+                .HasConversion(guidToStringConverter)
+                .HasColumnType("TEXT")
+                .UseCollation("NOCASE");
+
 
         }
     }

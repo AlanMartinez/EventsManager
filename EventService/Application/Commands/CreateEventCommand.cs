@@ -1,8 +1,10 @@
 ﻿using EventService.Models;
 using MediatR;
 
-public record CreateEventCommand(
-    string Title, 
+namespace EventService.Application.Commands
+{
+    public record CreateEventCommand(
+    string Title,
     string Description,
     DateTime InitDate,
     DateTime EndDate,
@@ -14,3 +16,4 @@ public record CreateEventCommand(
     decimal Price,
     string Tags
     ) : IRequest<Event>;
+}

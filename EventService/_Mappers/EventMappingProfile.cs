@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EventService.Application.Commands;
 using EventService.DTOs.AzureFunctions;
 using EventService.Models;
 

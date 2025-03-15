@@ -1,3 +1,4 @@
+using EventService.Application.Commands;
 using EventService.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -30,7 +31,7 @@ namespace EventService.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetEventById(string id)
+        public async Task<IActionResult> GetEventById(Guid id)
         {
             var eventItem = await _mediator.Send(new GetEventByIdQuery(id));
             if (eventItem == null) return NotFound();
@@ -46,7 +47,7 @@ namespace EventService.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEvent(string id)
+        public async Task<IActionResult> DeleteEvent(Guid id)
         {
             var deleted = await _mediator.Send(new DeleteEventCommand(id));
             if (!deleted) return NotFound();
@@ -59,6 +60,13 @@ namespace EventService.Controllers
             var eventItem = await _mediator.Send(new GetEventAttendeesAndRatingQuery());
             if (eventItem == null) return NotFound();
             return Ok(eventItem);
+        }
+
+        [HttpPost("register-event-attendee")]
+        public async Task<IActionResult> RegisterEventAttendee([FromBody] RegisterEventAttendeeCommand command)
+        {
+            await _mediator.Send(command);
+            return Ok();
         }
     }
 }
