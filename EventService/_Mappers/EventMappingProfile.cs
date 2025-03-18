@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using EventService.Application.Commands;
+using EventService.Application.Queries;
 using EventService.DTOs.AzureFunctions;
+using EventService.DTOs.Queries;
+using EventService.Infrastructure.Models;
 using EventService.Models;
 
 namespace EventService._Mappers
@@ -17,7 +20,7 @@ namespace EventService._Mappers
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore());
 
             CreateMap<Event, EventCreatedFunctionDto>();
-
+            CreateMap<GetFilteredEventsQuery, EventFilteredParams>();
         }
     }
 }

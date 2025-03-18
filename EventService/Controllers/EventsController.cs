@@ -68,5 +68,13 @@ namespace EventService.Controllers
             await _mediator.Send(command);
             return Ok();
         }
+
+        [HttpGet("filter")]
+        public async Task<IActionResult> GetFilteredEventsQuery([FromQuery] GetFilteredEventsQuery query)
+        {
+            var eventItem = await _mediator.Send(query);
+            if (eventItem == null) return NotFound();
+            return Ok(eventItem);
+        }
     }
 }

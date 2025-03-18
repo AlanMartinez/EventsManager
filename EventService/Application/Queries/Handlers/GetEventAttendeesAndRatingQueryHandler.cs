@@ -15,7 +15,7 @@ namespace EventService.Application.Queries.Handlers
 
         public async Task<IEnumerable<EventAttendeesRatingDto>?> Handle(GetEventAttendeesAndRatingQuery request, CancellationToken cancellationToken)
         {
-            return await _repository.GetEventAttendeesRatingDtoAsync();
+            return await _repository.GetEventAttendeesRatingAsync();
         }
     }
 }

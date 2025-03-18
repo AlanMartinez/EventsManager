@@ -12,6 +12,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using EventService.Middlewares;
 using EventService.Filters;
+using EventService.Application.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddMediatR(cfg =>
-    cfg.RegisterServicesFromAssemblyContaining<GetAllEventsQueryHandler>());
+    {
+        cfg.RegisterServicesFromAssemblyContaining<GetAllEventsQueryHandler>();
+        cfg.RegisterServicesFromAssemblyContaining<GetFilteredEventsQueryHandler>();
+    });
 
 //Database
 builder.Services.AddDbContext<EventDbContext>(options =>

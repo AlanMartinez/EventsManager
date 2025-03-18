@@ -1,10 +1,11 @@
 ﻿using EventService.Models.Enums;
-using System;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
-using System.Net.Sockets;
 
 namespace EventService.Models
 {
+    [Index(nameof(City))]
+    [Index(nameof(City), nameof(Capacity), Name = "IX_Event_CityCapacity")]
     public class Event
     {
         [Key]
