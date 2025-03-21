@@ -7,10 +7,10 @@ namespace EventService.Application.Queries.Handlers
 {
     public class GetAllEventsQueryHandler : IRequestHandler<GetAllEventsQuery, IEnumerable<Event>>
     {
-        private readonly IGenericRepository<Event> _repository;
+        private readonly IEventRepository _repository;
         private readonly ICacheService<Event> _cacheService;
 
-        public GetAllEventsQueryHandler(IGenericRepository<Event> repository, ICacheService<Event> cacheService)
+        public GetAllEventsQueryHandler(IEventRepository repository, ICacheService<Event> cacheService)
         {
             _repository = repository;
             _cacheService = cacheService;
