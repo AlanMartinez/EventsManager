@@ -42,5 +42,10 @@ namespace EventService.Infrastructure.Impl
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<T?> FindAsync(params object[] keyValues)
+        {
+            return await _context.Set<T>().FindAsync(keyValues);
+        }
     }
 }

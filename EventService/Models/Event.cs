@@ -52,5 +52,7 @@ namespace EventService.Models
 
         public ICollection<EventAttendee> EventAttendees { get; set; } = new List<EventAttendee>();
         public ICollection<EventReview> EventReviews { get; set; } = new List<EventReview>();
+
+        public bool IsActive => this.State == EventStateEnum.ACTIVE;
     }
 }
